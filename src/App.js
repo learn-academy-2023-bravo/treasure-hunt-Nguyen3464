@@ -20,7 +20,6 @@ const App = () => {
 
   const [bombLocation, setBombLocation] = useState(Math.floor(Math.random() * board.length))
 
-
   const handleGamePlay = (clickedSquare) => {
     let updateBoard = [...board] // creates a copy of the array
     if(clickedSquare === treasureLocation) {
@@ -35,9 +34,15 @@ const App = () => {
     }
   }
 
+  const handleRestart = () => {
+    window.location.reload()
+  }
   return (
     <>
       <h1>Treasure Hunt Game</h1>
+      <div className="restartButton">
+        <button onClick={handleRestart}>Play Again</button>
+      </div>
       <div className="board">
       {
         board.map((square, index) => {
