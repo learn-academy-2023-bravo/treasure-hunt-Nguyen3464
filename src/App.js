@@ -16,14 +16,17 @@ const App = () => {
   ])
 
 const handleGamePlay = (clickSquare) => {
-alert(clickSquare)
+  let updateBoard = [...board] // makes copy of array
+  updateBoard[clickSquare] = "🎄" // access value at index[]
+  setBoard(updateBoard)//change value at index to "🎄"
+  
 }
 
   return (
     <>
       <h1>Treasure Hunt Game</h1>
       <div className="board">
-        {board.map((value, index) => {
+        {board.map((value, index) => { //maps over board array and pulls value and index
         return <Square 
                 value={value}
                 index={index}
