@@ -2,6 +2,7 @@
 import React, { useState } from "react"
 import "./App.css"
 import Square from './components/Square'
+import RestartButton from './components/RestartButton'
 
 const App = () => {
   const [board, setBoard] = useState([
@@ -20,6 +21,10 @@ const App = () => {
 
   const [bombLocation, setBombLocation] = useState(Math.floor(Math.random() * board.length))
 
+  const [counter, setCounter] = useState("5")
+
+
+
   const handleGamePlay = (clickedSquare) => {
     let updateBoard = [...board] // creates a copy of the array
     if(clickedSquare === treasureLocation) {
@@ -34,18 +39,13 @@ const App = () => {
     }
   }
 
-  const handleRestart = () => {
-    window.location.reload()
-  }
   return (
     <>
       <h1>Treasure Hunt Game</h1>
-      <div className="restartButton">
-        <button onClick={handleRestart}>Play Again</button>
-      </div>
+      <RestartButton />
+
       <div className="board">
-      {
-        board.map((square, index) => {
+      {board.map((square, index) => {
           return <Square 
             square={square}
             index={index}
